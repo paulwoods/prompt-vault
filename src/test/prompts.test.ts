@@ -1,4 +1,4 @@
-import {beforeEach, describe, expect, it, vi} from 'vitest';
+import {beforeEach, describe, expect, it, Mock, vi} from 'vitest';
 import {GET, POST} from '@/app/api/prompts/route';
 import {prisma} from '@/lib/prisma';
 import {auth} from '@/auth';
@@ -23,16 +23,16 @@ describe('Prompts API', () => {
 
     describe('GET /api/prompts', () => {
         it('should return 401 if not authenticated', async () => {
-            (auth as any).mockResolvedValue(null);
+            (auth as Mock).mockResolvedValue(null);
             const req = new Request('http://localhost/api/prompts');
             const response = await GET(req);
             expect(response.status).toBe(401);
         });
 
         it('should return prompts for authenticated user', async () => {
-            (auth as any).mockResolvedValue({user: {id: 'user_1'}});
+            (auth as Mock).mockResolvedValue({user: {id: 'user_1'}});
             const mockPrompts = [{id: 'p1', name: 'Prompt 1'}];
-            (prisma.prompt.findMany as any).mockResolvedValue(mockPrompts);
+            (prisma.prompt.findMany as Mock).mockResolvedValue(mockPrompts);
 
             const req = new Request('http://localhost/api/prompts');
             const response = await GET(req);
@@ -48,9 +48,9 @@ describe('Prompts API', () => {
 
     describe('POST /api/prompts', () => {
         it('should create a new prompt', async () => {
-            (auth as any).mockResolvedValue({user: {id: 'user_1'}});
+            (auth as Mock).mockResolvedValue({user: {id: 'user_1'}});
             const mockPrompt = {id: 'p1', name: 'New Prompt', content: 'Content'};
-            (prisma.prompt.create as any).mockResolvedValue(mockPrompt);
+            (prisma.prompt.create as Mock).mockResolvedValue(mockPrompt);
 
             const req = new Request('http://localhost/api/prompts', {
                 method: 'POST',

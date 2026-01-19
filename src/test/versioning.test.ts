@@ -1,4 +1,4 @@
-import {beforeEach, describe, expect, it, vi} from 'vitest';
+import {beforeEach, describe, expect, it, Mock, vi} from 'vitest';
 import {PATCH} from '@/app/api/prompts/[id]/route';
 import {prisma} from '@/lib/prisma';
 import {auth} from '@/auth';
@@ -24,15 +24,15 @@ describe('Prompt Versioning', () => {
     it('should create a new version when content is updated', async () => {
         const userId = 'user_1';
         const promptId = 'prompt_1';
-        (auth as any).mockResolvedValue({user: {id: userId}});
+        (auth as Mock).mockResolvedValue({user: {id: userId}});
 
-        (prisma.prompt.findUnique as any).mockResolvedValue({
+        (prisma.prompt.findUnique as Mock).mockResolvedValue({
             id: promptId,
             userId: userId,
             content: 'Old Content',
         });
 
-        (prisma.prompt.update as any).mockResolvedValue({
+        (prisma.prompt.update as Mock).mockResolvedValue({
             id: promptId,
             content: 'New Content',
         });
@@ -59,15 +59,15 @@ describe('Prompt Versioning', () => {
     it('should NOT create a new version if content is same', async () => {
         const userId = 'user_1';
         const promptId = 'prompt_1';
-        (auth as any).mockResolvedValue({user: {id: userId}});
+        (auth as Mock).mockResolvedValue({user: {id: userId}});
 
-        (prisma.prompt.findUnique as any).mockResolvedValue({
+        (prisma.prompt.findUnique as Mock).mockResolvedValue({
             id: promptId,
             userId: userId,
             content: 'Same Content',
         });
 
-        (prisma.prompt.update as any).mockResolvedValue({
+        (prisma.prompt.update as Mock).mockResolvedValue({
             id: promptId,
             content: 'Same Content',
         });
@@ -80,7 +80,7 @@ describe('Prompt Versioning', () => {
         const response = await PATCH(req, {params: Promise.resolve({id: promptId})});
 
         expect(response.status).toBe(200);
-        const updateCall = (prisma.prompt.update as any).mock.calls[0][0];
+        const updateCall = (prisma.prompt.update as Mock).mock.calls[0][0];
         expect(updateCall.data.versions).toBeUndefined();
         expect(updateCall.data.name).toBe('New Name');
     });
