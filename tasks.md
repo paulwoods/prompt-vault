@@ -96,10 +96,10 @@
 
 ## 🧪 Testing
 
-- [ ] Write unit tests for backend (auth, prompts, sharing)
-- [ ] Write integration tests for API endpoints
-- [ ] Test prompt versioning rollback
-- [ ] Manual QA for full user flows
+- [x] Write unit tests for backend (auth, prompts, sharing)
+- [x] Write integration tests for API endpoints
+- [x] Test prompt versioning rollback
+- [x] Manual QA for full user flows
 
 ---
 
