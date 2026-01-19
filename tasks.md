@@ -2,95 +2,95 @@
 
 ## 🔧 Setup & Infrastructure
 
-- [ ] Set up project repositories (frontend + backend)
-- [ ] Choose tech stack (confirm: React, Node.js/Python, PostgreSQL)
-- [ ] Set up local development environments
-- [ ] Configure version control (e.g., GitHub)
-- [ ] Set up CI/CD pipeline (GitHub Actions, Vercel, or similar)
-- [ ] Initialize database schema
+- [x] Set up project repositories (frontend + backend)
+- [x] Choose tech stack (confirm: React, Node.js/Python, PostgreSQL)
+- [x] Set up local development environments
+- [x] Configure version control (e.g., GitHub)
+- [x] Set up CI/CD pipeline (GitHub Actions, Vercel, or similar)
+- [x] Initialize database schema
 
 ---
 
 ## 👥 User Authentication & Security
 
-- [ ] Implement user registration
-- [ ] Implement secure login (email/password or OAuth2)
-- [ ] Add JWT-based session management
-- [ ] Hash and store passwords securely
-- [ ] Protect all endpoints with user-based access control
+- [x] Implement user registration
+- [x] Implement secure login (email/password or OAuth2)
+- [x] Add JWT-based session management
+- [x] Hash and store passwords securely
+- [x] Protect all endpoints with user-based access control
 
 ---
 
 ## 🧠 Prompt Management (CRUD)
 
-- [ ] Create "New Prompt" API (Create)
-- [ ] Implement prompt editing with version history (Update)
-- [ ] List prompts on dashboard (Read)
-- [ ] Delete a prompt (soft or hard delete)
-- [ ] Store tags with prompts
-- [ ] Link prompts to individual user accounts
+- [x] Create "New Prompt" API (Create)
+- [x] Implement prompt editing with version history (Update)
+- [x] List prompts on dashboard (Read)
+- [x] Delete a prompt (soft or hard delete)
+- [x] Store tags with prompts
+- [x] Link prompts to individual user accounts
 
 ---
 
 ## 🖥️ Frontend: Dashboard UI
 
-- [ ] Create prompt dashboard layout
-- [ ] Display list of prompts with name, preview, tags
-- [ ] Add sorting by name/date/last updated
-- [ ] Implement filters by tags
-- [ ] Add search bar (name + content + tags)
+- [x] Create prompt dashboard layout
+- [x] Display list of prompts with name, preview, tags
+- [x] Add sorting by name/date/last updated
+- [x] Implement filters by tags
+- [x] Add search bar (name + content + tags)
 
 ---
 
 ## 🏷️ Tags & Filtering
 
-- [ ] Create tag input on prompt form
-- [ ] Support multiple tags per prompt
-- [ ] Enable filtering prompts by tags in dashboard
+- [x] Create tag input on prompt form
+- [x] Support multiple tags per prompt
+- [x] Enable filtering prompts by tags in dashboard
 
 ---
 
 ## ✏️ Prompt Editor with Versioning
 
-- [ ] Create frontend form to create/edit prompts
-- [ ] Save each edit as a new version in the backend
-- [ ] Display version history in UI
-- [ ] Allow revert to a previous version
+- [x] Create frontend form to create/edit prompts
+- [x] Save each edit as a new version in the backend
+- [x] Display version history in UI
+- [x] Allow revert to a previous version
 
 ---
 
 ## 🔍 Search Functionality
 
-- [ ] Backend: Implement search by name, content, tags
-- [ ] Frontend: Connect search bar to API
-- [ ] Highlight matching results
+- [x] Backend: Implement search by name, content, tags
+- [x] Frontend: Connect search bar to API
+- [x] Highlight matching results
 
 ---
 
 ## 🔗 Sharing System
 
-- [ ] Backend: Generate unique, public share links
-- [ ] Track share link views
-- [ ] Allow users to disable (revoke) share links
-- [ ] Frontend: Create share modal with copy link + revoke option
-- [ ] Create public view page for shared prompt
+- [x] Backend: Generate unique, public share links
+- [x] Track share link views
+- [x] Allow users to disable (revoke) share links
+- [x] Frontend: Create share modal with copy link + revoke option
+- [x] Create public view page for shared prompt
 
 ---
 
 ## 📤 Export Functionality
 
-- [ ] Backend: Add export to JSON
-- [ ] Backend: Add export to CSV
-- [ ] Frontend: Add export buttons in settings or dashboard
+- [x] Backend: Add export to JSON
+- [x] Backend: Add export to CSV
+- [x] Frontend: Add export buttons in settings or dashboard
 
 ---
 
 ## 🛡️ Security Essentials
 
-- [ ] Enforce HTTPS (in production)
-- [ ] Sanitize inputs to prevent injection
-- [ ] Add CSRF/XSS protection
-- [ ] Rate-limit public endpoints (e.g., shared links)
+- [x] Enforce HTTPS (in production)
+- [x] Sanitize inputs to prevent injection
+- [x] Add CSRF/XSS protection
+- [x] Rate-limit public endpoints (e.g., shared links)
 
 ---
 
