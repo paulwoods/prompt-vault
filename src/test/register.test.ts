@@ -1,4 +1,4 @@
-import {beforeEach, describe, expect, it, vi} from 'vitest';
+import {beforeEach, describe, expect, it, Mock, vi} from 'vitest';
 import {POST} from '@/app/api/register/route';
 import {prisma} from '@/lib/prisma';
 import bcrypt from 'bcryptjs';
@@ -37,7 +37,7 @@ describe('Register API', () => {
     });
 
     it('should return 400 if user already exists', async () => {
-        (prisma.user.findUnique as any).mockResolvedValue({id: '1', email: 'test@example.com'});
+        (prisma.user.findUnique as Mock).mockResolvedValue({id: '1', email: 'test@example.com'});
 
         const req = new Request('http://localhost/api/register', {
             method: 'POST',
@@ -52,9 +52,9 @@ describe('Register API', () => {
     });
 
     it('should create a new user and return 201', async () => {
-        (prisma.user.findUnique as any).mockResolvedValue(null);
-        (bcrypt.hash as any).mockResolvedValue('hashed_password');
-        (prisma.user.create as any).mockResolvedValue({id: 'user_123'});
+        (prisma.user.findUnique as Mock).mockResolvedValue(null);
+        (bcrypt.hash as Mock).mockResolvedValue('hashed_password');
+        (prisma.user.create as Mock).mockResolvedValue({id: 'user_123'});
 
         const req = new Request('http://localhost/api/register', {
             method: 'POST',
