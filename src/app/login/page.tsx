@@ -38,36 +38,48 @@ export default function LoginPage() {
     }
 
     return (
-        <div className="flex min-h-screen items-center justify-center bg-gray-50 px-4 py-12 sm:px-6 lg:px-8">
-            <div className="w-full max-w-md space-y-8">
+        <div className="flex min-h-screen items-center justify-center bg-background px-4 py-12 sm:px-6 lg:px-8">
+            <div className="w-full max-w-md space-y-8 bg-card p-8 rounded-xl border border-border shadow-2xl">
                 <div>
-                    <h2 className="mt-6 text-center text-3xl font-bold tracking-tight text-gray-900">
-                        Sign in to PromptVault
+                    <h2 className="text-center text-3xl font-black tracking-tighter text-white uppercase">
+                        PROMPT<span className="text-primary">VAULT</span> ACCESS
                     </h2>
+                    <p className="mt-2 text-center text-xs font-bold text-muted-foreground uppercase tracking-widest">
+                        Secure Environment Initialization
+                    </p>
                 </div>
                 <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
                     {error && (
-                        <div className="rounded-md bg-red-50 p-4 text-sm text-red-700">
+                        <div
+                            className="rounded-md bg-red-950/50 border border-red-900 p-4 text-sm text-red-400 font-bold">
                             {error}
                         </div>
                     )}
-                    <div className="-space-y-px rounded-md shadow-sm">
+                    <div className="space-y-4">
                         <div>
+                            <label
+                                className="block text-[10px] font-black text-muted-foreground uppercase tracking-widest mb-1.5 ml-1">
+                                Identity
+                            </label>
                             <input
                                 type="email"
                                 required
-                                className="relative block w-full rounded-t-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                placeholder="Email address"
+                                className="block w-full rounded-lg bg-slate-900 border border-border py-2.5 px-3 text-white placeholder:text-slate-600 focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm"
+                                placeholder="name@corporate.com"
                                 value={email}
                                 onChange={(e) => setEmail(e.target.value)}
                             />
                         </div>
                         <div>
+                            <label
+                                className="block text-[10px] font-black text-muted-foreground uppercase tracking-widest mb-1.5 ml-1">
+                                Authorization Key
+                            </label>
                             <input
                                 type="password"
                                 required
-                                className="relative block w-full rounded-b-md border-0 py-1.5 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:z-10 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
-                                placeholder="Password"
+                                className="block w-full rounded-lg bg-slate-900 border border-border py-2.5 px-3 text-white placeholder:text-slate-600 focus:ring-1 focus:ring-primary focus:border-primary sm:text-sm"
+                                placeholder="••••••••"
                                 value={password}
                                 onChange={(e) => setPassword(e.target.value)}
                             />
@@ -78,15 +90,16 @@ export default function LoginPage() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className="group relative flex w-full justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600 disabled:opacity-50"
+                            className="group relative flex w-full justify-center rounded-lg bg-primary px-3 py-3 text-sm font-black text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-primary disabled:opacity-50 transition-all uppercase tracking-widest shadow-lg shadow-blue-500/20"
                         >
-                            {loading ? 'Signing in...' : 'Sign in'}
+                            {loading ? 'AUTHENTICATING...' : 'Sign in'}
                         </button>
                     </div>
                 </form>
-                <div className="text-center">
-                    <Link href="/register" className="text-sm font-medium text-indigo-600 hover:text-indigo-500">
-                        Don&apos;t have an account? Register
+                <div className="text-center pt-4 border-t border-border">
+                    <Link href="/register"
+                          className="text-xs font-black text-primary hover:text-white uppercase tracking-widest transition-colors">
+                        Request Access Portfolio
                     </Link>
                 </div>
             </div>

@@ -35,31 +35,39 @@ export default async function PublicSharePage({
     const {prompt} = shareLink
 
     return (
-        <div className="min-h-screen bg-gray-50 flex items-center justify-center p-4">
-            <div className="max-w-3xl w-full bg-white rounded-lg shadow-lg overflow-hidden">
-                <div className="bg-indigo-600 px-6 py-4">
-                    <h1 className="text-xl font-bold text-white">PromptVault Public Share</h1>
+        <div className="min-h-screen bg-background flex items-center justify-center p-4">
+            <div className="max-w-3xl w-full bg-card rounded-xl border border-border shadow-2xl overflow-hidden">
+                <div className="bg-slate-900 border-b border-border px-6 py-4">
+                    <h1 className="text-sm font-black text-white uppercase tracking-[0.2em]">
+                        PROMPT<span className="text-primary">VAULT</span> PUBLIC_ASSET
+                    </h1>
                 </div>
-                <div className="p-6">
-                    <div className="mb-6">
-                        <h2 className="text-2xl font-bold text-gray-900 mb-1">{prompt.name}</h2>
-                        <p className="text-sm text-gray-500">
-                            Shared by {prompt.user.name || "a User"} • {new Date(prompt.updatedAt).toLocaleDateString()}
-                        </p>
+                <div className="p-8">
+                    <div className="mb-8">
+                        <h2 className="text-3xl font-black text-white mb-2 tracking-tight uppercase">{prompt.name}</h2>
+                        <div className="flex items-center space-x-2">
+                             <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">
+                                ORIGIN: {prompt.user.name || "UNSPECIFIED"}
+                            </span>
+                            <span className="text-muted-foreground text-[10px]">•</span>
+                            <span className="text-[10px] font-black text-muted-foreground uppercase tracking-widest">
+                                TIMESTAMP: {new Date(prompt.updatedAt).toISOString().split('T')[0]}
+                            </span>
+                        </div>
                     </div>
 
-                    <div className="bg-gray-50 rounded-md p-4 mb-6 border border-gray-200">
-            <pre className="whitespace-pre-wrap font-sans text-gray-800 leading-relaxed">
-              {prompt.content}
-            </pre>
+                    <div className="bg-slate-900/50 rounded-lg p-6 mb-8 border border-border shadow-inner">
+                        <pre className="whitespace-pre-wrap font-mono text-slate-300 text-sm leading-relaxed">
+                          {prompt.content}
+                        </pre>
                     </div>
 
                     {prompt.tags.length > 0 && (
-                        <div className="flex flex-wrap gap-2 mb-6">
+                        <div className="flex flex-wrap gap-2 mb-8">
                             {prompt.tags.map((tag) => (
                                 <span
                                     key={tag.id}
-                                    className="bg-indigo-50 text-indigo-700 text-xs px-2 py-1 rounded"
+                                    className="bg-slate-800 text-slate-300 text-[10px] font-black uppercase tracking-wider px-2 py-1 rounded border border-slate-700"
                                 >
                   {tag.name}
                 </span>
@@ -67,15 +75,17 @@ export default async function PublicSharePage({
                         </div>
                     )}
 
-                    <div className="pt-6 border-t border-gray-100 flex justify-between items-center">
-            <span className="text-xs text-gray-400">
-              {shareLink.views + 1} views
-            </span>
+                    <div
+                        className="pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
+                        <span
+                            className="text-[10px] font-black text-muted-foreground uppercase tracking-widest bg-slate-800 px-3 py-1 rounded-full">
+                          LOGS: {shareLink.views + 1} ACCESS_EVENTS
+                        </span>
                         <a
                             href="/"
-                            className="text-sm font-medium text-indigo-600 hover:text-indigo-500"
+                            className="text-xs font-black text-primary hover:text-white uppercase tracking-widest transition-colors"
                         >
-                            Create your own Vault at PromptVault →
+                            INITIALIZE PERSONAL VAULT →
                         </a>
                     </div>
                 </div>

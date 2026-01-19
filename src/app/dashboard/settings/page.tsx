@@ -11,55 +11,64 @@ export default function SettingsPage() {
     }
 
     return (
-        <div className="space-y-6">
-            <h1 className="text-2xl font-bold text-gray-900">Settings & Export</h1>
+        <div className="space-y-8">
+            <h1 className="text-3xl font-black text-white tracking-tight uppercase">System Settings & Data
+                Governance</h1>
 
-            <div className="bg-white rounded-lg shadow p-6">
-                <h2 className="text-lg font-semibold mb-4 text-gray-900">Account Information</h2>
-                <div className="space-y-2">
-                    <p className="text-sm text-gray-600">
-                        <span className="font-medium text-gray-900">Name:</span> {session?.user?.name || 'N/A'}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                        <span className="font-medium text-gray-900">Email:</span> {session?.user?.email}
-                    </p>
+            <div className="bg-card rounded-xl border border-border shadow-2xl p-6">
+                <h2 className="text-sm font-black text-white mb-6 uppercase tracking-widest pb-2 border-b border-border">User
+                    Profile</h2>
+                <div className="space-y-4">
+                    <div>
+                        <span
+                            className="text-[10px] font-black text-muted-foreground uppercase tracking-widest block mb-1">Authenticated Identity</span>
+                        <p className="text-sm text-white font-mono">{session?.user?.name || 'N/A'}</p>
+                    </div>
+                    <div>
+                        <span
+                            className="text-[10px] font-black text-muted-foreground uppercase tracking-widest block mb-1">Corporate Email Address</span>
+                        <p className="text-sm text-white font-mono">{session?.user?.email}</p>
+                    </div>
                 </div>
             </div>
 
-            <div className="bg-white rounded-lg shadow p-6">
-                <h2 className="text-lg font-semibold mb-2 text-gray-900">Export Your Data</h2>
-                <p className="text-sm text-gray-600 mb-6">
-                    Download all your prompts in either JSON or CSV format. This includes all prompt content, names, and
-                    tags.
+            <div className="bg-card rounded-xl border border-border shadow-2xl p-6">
+                <h2 className="text-sm font-black text-white mb-4 uppercase tracking-widest pb-2 border-b border-border">Data
+                    Portability</h2>
+                <p className="text-xs text-muted-foreground mb-8 font-medium leading-relaxed max-w-2xl">
+                    Execute a complete archival download of your prompt database.
+                    All assets, revisions, and metadata will be exported in the selected schema.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
                     <button
                         onClick={() => handleExport('json')}
-                        className="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50"
+                        className="inline-flex items-center justify-center rounded-lg border border-border bg-slate-800 px-6 py-2.5 text-xs font-black text-white hover:bg-slate-700 transition-all uppercase tracking-widest"
                     >
-                        <Download className="w-4 h-4 mr-2"/>
-                        Export as JSON
+                        <Download className="w-4 h-4 mr-2 text-primary"/>
+                        Export Schema (JSON)
                     </button>
                     <button
                         onClick={() => handleExport('csv')}
-                        className="inline-flex items-center justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50"
+                        className="inline-flex items-center justify-center rounded-lg border border-border bg-slate-800 px-6 py-2.5 text-xs font-black text-white hover:bg-slate-700 transition-all uppercase tracking-widest"
                     >
-                        <Download className="w-4 h-4 mr-2"/>
-                        Export as CSV
+                        <Download className="w-4 h-4 mr-2 text-primary"/>
+                        Export Table (CSV)
                     </button>
                 </div>
             </div>
 
-            <div className="bg-red-50 rounded-lg border border-red-200 p-6">
-                <h2 className="text-lg font-semibold mb-2 text-red-800">Danger Zone</h2>
-                <p className="text-sm text-red-700 mb-4">
-                    Once you delete your account, there is no going back. Please be certain.
+            <div className="bg-red-950/20 rounded-xl border border-red-900/50 p-6">
+                <h2 className="text-sm font-black text-red-500 mb-2 uppercase tracking-widest">Termination
+                    Protocols</h2>
+                <p className="text-xs text-red-400/80 mb-6 font-medium leading-relaxed">
+                    Initiating account termination will result in the permanent deletion of all vaulted assets and
+                    revision history.
                 </p>
                 <button
                     disabled
-                    className="inline-flex items-center justify-center rounded-md border border-transparent bg-red-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-red-700 disabled:opacity-50"
+                    className="inline-flex items-center justify-center rounded-lg bg-red-900/50 px-6 py-2.5 text-xs font-black text-white disabled:opacity-30 uppercase tracking-widest"
                 >
-                    Delete Account
+                    Terminate Identity
                 </button>
             </div>
         </div>

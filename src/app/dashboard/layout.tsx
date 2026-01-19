@@ -8,7 +8,7 @@ export default function DashboardLayout({
 }) {
     return (
         <SessionProvider>
-            <div className="min-h-screen bg-gray-50">
+            <div className="min-h-screen bg-background">
                 <Navbar/>
                 <Sidebar/>
                 <div className="p-4 sm:ml-64 pt-20">
