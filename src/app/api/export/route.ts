@@ -1,6 +1,7 @@
 import {NextResponse} from "next/server"
 import {auth} from "@/auth"
 import {prisma} from "@/lib/prisma"
+import type {Prompt, Tag} from "@prisma/client"
 
 export async function GET(req: Request) {
     const session = await auth()
@@ -22,7 +23,7 @@ export async function GET(req: Request) {
 
         if (format === "csv") {
             const headers = ["id", "name", "content", "tags", "createdAt", "updatedAt"]
-            const rows = prompts.map((p) => [
+            const rows = prompts.map((p: Prompt & { tags: Tag[] }) => [
                 p.id,
                 `"${p.name.replace(/"/g, '""')}"`,
                 `"${p.content.replace(/"/g, '""')}"`,
