@@ -1,0 +1,8 @@
+services:
+  prompt-vault:
+    image: paulwoods/prompt-vault:latest
+    ports:
+      - "3000:3000"
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@db/postgres
+    restart: always
